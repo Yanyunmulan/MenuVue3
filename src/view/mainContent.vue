@@ -13,35 +13,23 @@
         <div class="nav-item">家居</div>
         <div class="nav-item">旅行</div>
       </div> -->
-      <van-nav-bar
-        left-text="Back"
-        left-arrow
-        @click-left="onClickLeft"
-      >
-      <template #title>
-        <van-tabs v-model:active="active" 
-          animated 
-          line-width="26px" 
-          sticky
-          line-height="2px"
-          color="#EA4148"
-          title-inactive-color="#8b8c8b"
-          title-active-color="#333333"
-          >
-            <van-tab title="关注" />
-            <van-tab title="发现" />
-                    <!-- <div class="article"> -->
-                <!-- <el-empty description="暂无内容" v-if="blogList.length == 0 && loading != true" class="empty" /> -->
-                <!-- <el-skeleton :loading="loading" animated> -->
-                <!-- </el-skeleton> -->
-                    <!-- </div> -->
-            <van-tab title="重庆"/>
-        </van-tabs>
-        </template>
-      </van-nav-bar>
-      <div class="article">
+      <van-tabs v-model:active="active" 
+        animated 
+        line-width="26px" 
+        sticky
+        line-height="2px"
+        color="#EA4148"
+        title-inactive-color="#8b8c8b"
+        title-active-color="#333333"
+        >
+          <van-tab title="关注">关注</van-tab>
+          <van-tab title="发现">
+            <div class="article">
+        <!-- <el-empty description="暂无内容" v-if="blogList.length == 0 && loading != true" class="empty" /> -->
+        <!-- <el-skeleton :loading="loading" animated> -->
+
+
         <ArticleItem
-          v-if="active == 1"
           v-for="song in songList"
           :key="song.id"
           :title="song.name"
@@ -52,9 +40,22 @@
           :imgSrc="song.al.picUrl"
           @select="selectCard"
         />
-      </div>
+        <!-- <ArticleItem
+          title="请记得多吃水果请记得多吃水果请记得多吃水果请记得多吃水果请记得多吃水果"
+          :avatar="'https://sns-avatar-qc.xhscdn.com/avatar/6448fd9cb72edfcefe4e9b21.jpg'"
+          username="请记得多吃水果"
+          content="song.al.name"
+          likeNum="78"
+          :imgSrc="'https://sns-avatar-qc.xhscdn.com/avatar/6448fd9cb72edfcefe4e9b21.jpg'"
+          @select="selectCard"
+        /> -->
 
 
+        <!-- </el-skeleton> -->
+            </div>
+          </van-tab>
+          <van-tab title="重庆">重庆</van-tab>
+        </van-tabs>
 
     </div>
   </template>
@@ -122,19 +123,23 @@
   const { selectCard, unselectCard } = cardStateStore
 
 
-
-  const onClickLeft = () => {
-    console.log('Back button clicked');
-  };
-
-
   </script>
   
   <style scoped>
   #content {
     position: relative;
     ::v-deep .van-tab {
-
+    /* position: relative;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; */
+    /* padding: 0 4px; */
+    /* color: var(--van-tab-text-color);
+    font-size: var(--van-tab-font-size);
+    line-height: var(--van-tab-line-height);
+    cursor: pointer; */
     }
     ::v-deep .van-tabs__line {
       bottom: 22px;
